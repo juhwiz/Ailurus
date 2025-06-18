@@ -21,7 +21,7 @@ export default function TelaLogin( {navigation} ){
                 <ButtonText>Entrar</ButtonText>
             </Button>
             
-            <TextBody> Ainda não cadastrado? 
+            <TextBody> Ainda não cadastrado?{' '} 
                 <LinkText onPress={() => navigation.navigate('Cadastro')}>
                     Clique aqui
                 </LinkText>
