@@ -1,24 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { Background, Logo, Title, Button, ButtonText, InputText,
-        CheckboxContainer, CheckboxLabel, CheckboxSquare, LinkText } from '../styled';
+        CheckboxContainer, CheckboxLabel, CheckboxSquare, LinkText, TextBody } from '../styled';
 import React, { useState } from 'react';
 import { Text, Linking, TouchableOpacity } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-//const loginStack = createStackNavigator();
-//function LoginButtonStack(){
-//  return(
-//    <loginStack.Navigator>
-//      <loginStack.Screen name='Login' component={}/>
-//    </loginStack.Navigator>
-//  );
-//}
-
 // ========================================================================
 
-export default function TelaCadastro() {
+export default function TelaCadastro({ navigation }) {
 
   const [isChecked, setIsChecked] = useState(false);
   return (
@@ -40,10 +28,15 @@ export default function TelaCadastro() {
         <CheckboxLabel>Concordo com os termos de uso</CheckboxLabel>
       </CheckboxContainer>
       
-      <Button onPress={() => alert('Botão clicado')}>
+      <Button onPress={() => navigation.navigate('Idioma')}>
         <ButtonText>Cadastrar</ButtonText>
       </Button>
 
+      <TextBody> Já é cadastrado?{' '} 
+        <LinkText onPress={() => navigation.navigate('Login')}>
+          Clique aqui
+        </LinkText>
+      </TextBody>
 
       <StatusBar style="auto" />
     </Background>
