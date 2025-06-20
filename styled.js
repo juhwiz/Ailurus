@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
+
 // ==== Estilos básicos da aplicação ====
 
 export const Background = styled.View`
@@ -69,6 +70,40 @@ export const InputText = styled.TextInput`
     font-size: 16px;
     color: #333;
     margin-top: 20px;
+`;
+
+// ==== Estilo Tela Inicial ====
+
+export const ContainerHome = styled.View`
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+`;
+
+export const ViewHome = styled.View`
+    padding: 10px;
+`;
+
+export const TextHome = styled.Text`
+    font-size: 18px;
+    align-self: left;
+`;
+
+export const TitleHome = styled.Text`
+    font-size: 25px;
+    color: #00000;
+    align-self: center;
+`;
+
+export const ImageHome = styled.Image`
+    object-fit: scale-down;
+    width: 200px;
+    height: 400px;
+    align-self: center;
+    border: 1px solid #CE6301;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 `;
 
 // ==== Estilo Picker ====
@@ -221,6 +256,86 @@ export const DescBaralho = styled.Text`
     font-size: 15px;
     margin-bottom: 5px;
 `;
+
+// ==== Estilo Baralho Aberto ====
+
+export const ViewCarta = styled.View`
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+`;
+
+export const Cartas = styled.TouchableOpacity`
+    border: 2px solid #CE6301;
+    border-radius: 5px;
+    width: 350px;
+    min-height: 120px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    align-items: left;
+`;
+
+export const PalavraCarta = styled.Text`
+    font-size: 22px;
+    font-weight: bold;
+`;
+
+export const TraducaoCarta = styled.Text`
+    font-size: 16px;
+    margin-top: 5px;
+`;
+
+export const FraseCarta = styled.Text`
+    font-size: 16px;
+`;
+
+// ==== Estilo Estudar Baralho ====
+
+
+export const ViewEstudarCarta = styled.View`
+    border: 2px solid #CE6301;
+    border-radius: 5px;
+    width: 350px;
+    min-height: 500px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    flex: 1;
+
+`;
+
+export const BotaoCarta = styled.TouchableOpacity`
+    align-self: center;
+    align-items: center;
+`;
+
+export const PalavraEscondida = styled.Text`
+    margin-top: 10px;
+    align-self: center;
+    font-size: 30px;
+`;
+
+export const PalavraVisivel = styled.Text`
+    align-self: center;
+    font-size: 20px;
+`;
+
+export const BotoesInferiores = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+`;
+
+export const Container = styled.View`
+  flex: 1;
+  justify-content: space-between;
+  padding: 100px 15px;
+`;
+
+
 
 // ==== Estilo Bottom Tab ====
 
