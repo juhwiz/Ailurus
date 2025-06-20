@@ -1,18 +1,20 @@
 import { Background, Logo, Title, Button, ButtonText, InputText, TextBody,
         CheckboxContainer, CheckboxLabel, CheckboxSquare, LinkText } from '../styled';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 
 
 // ========================================================================
 
 export default function TelaCriarBaralho({ navigation }){
     return(
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F9F8DC' }}>
+
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{ flex: 1 }}>
-            <ScrollView style={{backgroundColor: '#F9F8DC'}} contentContainerStyle={{ paddingBottom: 130, paddingTop: 50, flex: 1}}> 
+          style={{ flex: 1, backgroundColor: '#F9F8DC' }}>
+            <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: 130, paddingTop: 50, flexGrow: 1}}> 
                 <Background>
                     <Title>Crie seu baralho</Title>
                     <Logo style={{marginTop: 50}} source={require('../src/imgs/GenericAvatar.png')}/>
@@ -32,5 +34,6 @@ export default function TelaCriarBaralho({ navigation }){
             </ScrollView>
         </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
+        </SafeAreaView>
     );
 }

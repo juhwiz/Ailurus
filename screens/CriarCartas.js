@@ -4,17 +4,19 @@ import { Background, Logo, Title, Button, ButtonText, CheckboxLogo,  InputText,
         Text, ViewPerfil, Flags, PickerContainer, StyledPicker, TextPicker } from '../styled';
 import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 
 // ========================================================================
 
 export default function TelaCriarCarta({ navigation }){
     const [baralhoSelecionado, setBaralhoSelecionado] = useState('');
     return(
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F9F8DC' }}>
+
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{ flex: 1 }}>
+          style={{ flex: 1}} >
             <ScrollView style={{backgroundColor: '#F9F8DC'}} contentContainerStyle={{ paddingBottom: 130, paddingTop: 50, flex: 1}}>
                 <Background>
                     <Title>Crie sua carta</Title>
@@ -42,5 +44,6 @@ export default function TelaCriarCarta({ navigation }){
             </ScrollView>
         </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
+        </SafeAreaView>
     );
 }
