@@ -1,4 +1,4 @@
-import { Background, Logo, Title, TextHome, TitleHome, ContainerHome, ViewHome, ImageHome} from '../styled';
+import { Background, Logo, TextHome, TitleHome, ContainerHome, ViewHome, ImageHome} from '../styled';
 
 import { ScrollView, SafeAreaView } from 'react-native';
 
@@ -12,13 +12,14 @@ import TelaEscolherBaralho from './EscolherBaralho';
 import TelaCriarBaralho from './CriarBaralho';
 import TelaBaralhoAberto from './BaralhoAberto';
 import TelaEstudarBaralho from './EstudarBaralho';
+import TelaFimEstudo from './FimEstudo';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { tabBarOption } from '../styled';
 import { screenOptions } from '../styled';
-import { View } from 'react-native-web';
+import { UserProvider } from '../src/context/UserContext';
+import { ApiProvider } from '../src/context/ApiContext';
 
 // ========================================================================
 
@@ -61,13 +62,14 @@ function TelaInicial(){
 
 const Tab = createBottomTabNavigator();
 function MyTabs(){
+
     return(
         <Tab.Navigator screenOptions={screenOptions}>
             <Tab.Screen name="Inicio" component={TelaInicial}/>
             <Tab.Screen name="Cartas" component={TelaCriarCarta}/>
             <Tab.Screen name="Baralho" component={TelaEscolherBaralho}/>
             <Tab.Screen name="Alfabeto" component={TelaAlfabeto}/>
-            <Tab.Screen name="Perfil" component={TelaPerfil} />
+            <Tab.Screen name="Perfil" component={TelaPerfil}/>
         </Tab.Navigator>
     );
 }
@@ -76,18 +78,25 @@ const Stack = createStackNavigator();
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerShown: false}}>
-                <Stack.Screen name="Login" component={TelaLogin} />
-                <Stack.Screen name="Cadastro" component={TelaCadastro} />
-                <Stack.Screen name="Idioma" component={TelaIdioma} />
-                <Stack.Screen name="CriarBaralho" component={TelaCriarBaralho}/>
-                <Stack.Screen name="Baralho" component={TelaEscolherBaralho}/>
-                <Stack.Screen name="BaralhoAberto" component={TelaBaralhoAberto}/>
-                <Stack.Screen name="CriarCarta" component={TelaCriarCarta}/>
-                <Stack.Screen name="EstudarBaralho" component={TelaEstudarBaralho}/>
-                <Stack.Screen name="Home" component={MyTabs} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <UserProvider>
+            <ApiProvider>
+                <NavigationContainer>
+                    <Stack.Navigator screenOptions={{headerShown: false}}>
+                        <Stack.Screen name="Login" component={TelaLogin} />
+                        <Stack.Screen name="Cadastro" component={TelaCadastro} />
+                        <Stack.Screen name="Idioma" component={TelaIdioma} />
+                        <Stack.Screen name="CriarBaralho" component={TelaCriarBaralho}/>
+                        <Stack.Screen name="Baralho" component={TelaEscolherBaralho}/>
+                        <Stack.Screen name="BaralhoAberto" component={TelaBaralhoAberto}/>
+                        <Stack.Screen name="CriarCarta" component={TelaCriarCarta}/>
+                        <Stack.Screen name="EstudarBaralho" component={TelaEstudarBaralho}/>
+                        <Stack.Screen name="FimEstudo" component={TelaFimEstudo} />
+                        <Stack.Screen name="Home" component={MyTabs}/>
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </ApiProvider>
+        </UserProvider>
+
     );
 }
+

@@ -1,49 +1,48 @@
-import { View } from 'react-native-web';
-import { Background, Logo, Title, Button, ButtonText, CheckboxLogo,  InputText,
-        CheckboxContainer, CheckboxLabel, CheckboxSquare, LinkText, TextBody, 
-        Text, ViewPerfil, Flags, ViewBaralho, Baralhos, TitleBaralho, ImageBaralho, 
+import { Background, Button, ButtonText, TitleBaralho, ImageBaralho, 
         DescBaralho, ViewCarta, FraseCarta, PalavraCarta, TraducaoCarta, Cartas} from '../styled';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ScrollView } from 'react-native';
+import { ApiContext } from '../src/context/ApiContext'
 
 // ========================================================================
 
-export default function TelaBaralhoAberto({ navigation }){
+export default function TelaBaralhoAberto({ route, navigation }){
+    const { baralho } = route.params;
+    const { baseURL } = useContext(ApiContext);
+    
+    const [cartas, setCartas] = useState([]);
+
+    useEffect(() => {
+        fetch(`${baseURL}/cartas/baralho/${baralho.idBaralho}`)
+            .then(res => res.json())
+            .then(data => setCartas(data))
+            .catch(err => console.error('Erro ao buscar cartas:', err));
+    }, [baralho]);
+    
     return(
         <ScrollView style={{backgroundColor: '#F9F8DC'}} contentContainerStyle={{ paddingBottom: 100, paddingTop: 50}}>
             <Background>
-                <ImageBaralho style={{alignSelf: "center"}} source={require('../src/imgs/GenericAvatar.png')} />
-                <TitleBaralho>Pronomes</TitleBaralho>
-                <DescBaralho>Pronomes coreanos</DescBaralho>
+                <ImageBaralho style={{alignSelf: "center", borderRadius: 75, width: 130, height: 130}} source={baralho.imagemBaralho
+                        ? { uri: `${baseURL}/uploads/${baralho.imagemBaralho}` }
+                        : require('../src/imgs/GenericAvatar.png')} />
+                <TitleBaralho>{baralho.nomeBaralho}</TitleBaralho>
+                <DescBaralho>{baralho.descBaralho}</DescBaralho>
                 
                 <ViewCarta>
-                    <Cartas>
-                        <PalavraCarta>저 / 나</PalavraCarta>
-                        <TraducaoCarta>Eu</TraducaoCarta>
-                        <FraseCarta>저는 내일 도착합니다.</FraseCarta>
-                    </Cartas>
-                    <Cartas>
-                        <PalavraCarta>당신 / 너</PalavraCarta>
-                        <TraducaoCarta>Você</TraducaoCarta>
-                        <FraseCarta>당신은열이 있군요.</FraseCarta>
-                    </Cartas>
-                    <Cartas>
-                        <PalavraCarta>그 / 그녀</PalavraCarta>
-                        <TraducaoCarta>Ele / Ela</TraducaoCarta>
-                        <FraseCarta>그분은 등산하러 가셨습니다.</FraseCarta>
-                    </Cartas>
-                    <Cartas>
-                        <PalavraCarta>우리 / 저희</PalavraCarta>
-                        <TraducaoCarta>Nós</TraducaoCarta>
-                        <FraseCarta>저희는 숲에 산책을 하러 갑니다.</FraseCarta>
-                    </Cartas>
+                    {cartas.map((carta, index) => (
+                        <Cartas key={index}>
+                            <PalavraCarta>{carta.palavraCarta}</PalavraCarta>
+                            <TraducaoCarta>{carta.significadoPalavra}</TraducaoCarta>
+                            <FraseCarta>{carta.frasePalavra}</FraseCarta>
+                        </Cartas>
+                    ))}
                 </ViewCarta>
 
 
-                <Button onPress={() => {navigation.navigate('CriarCarta');}}>
+                <Button onPress={() => {navigation.navigate('CriarCarta', { baralhoSelecionado: baralho });}}>
                     <ButtonText>Criar carta</ButtonText>
                 </Button>
-                <Button onPress={() => {navigation.navigate('EstudarBaralho');}}>
+                <Button onPress={() => {navigation.navigate('EstudarBaralho', { baralho });}}>
                     <ButtonText>Estudar baralho</ButtonText>
                 </Button>
             </Background>

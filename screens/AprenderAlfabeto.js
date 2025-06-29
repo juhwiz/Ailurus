@@ -1,6 +1,4 @@
-import { Background, Logo, Title, Button, ButtonText, CheckboxLogo,  InputText,
-        CheckboxContainer, CheckboxLabel, CheckboxSquare, LinkText, TextBody, 
-        Text, ViewPerfil, Flags, ViewLetras,DivLetras, Letras, ScrollContainer } from '../styled';
+import { Background, Title, Text, ViewLetras,DivLetras, Letras } from '../styled';
 import { ScrollView } from 'react-native';
 
 // ========================================================================
