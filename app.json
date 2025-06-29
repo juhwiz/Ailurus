@@ -9,7 +9,7 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./src/imgs/AilurusLogo.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#F9F8DC"
     },
     "ios": {

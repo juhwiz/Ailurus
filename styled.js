@@ -226,13 +226,9 @@ export const ViewBaralho = styled.View`
 `;
 
 export const ImageBaralho = styled.Image`
-    object-fit: scale-down;
-    width: 60px;
-    height: 60px;
-    align-self: left;
+    align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
-
 `;
 
 export const Baralhos = styled.TouchableOpacity`
