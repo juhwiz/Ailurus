@@ -29,13 +29,16 @@ conexões entre o banco e a aplicação, foi utilizado o Postman. De tecnologias
 
 ## Screenshots
 
-- Tela baralho
+### Tela baralho
 ![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/Baralho.jpg)
-- Tela criar carta
+
+### Tela criar carta
 ![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/CriarCarta.jpg)
-- Tela perfil
+
+### Tela perfil
 ![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/Perfil.jpg)
-- Tela fim de estudo
+
+### Tela fim de estudo
 ![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/TelaFim.jpg)
 
 
