@@ -31,5 +31,4 @@ conexões entre o banco e a aplicação, foi utilizado o Postman. De tecnologias
 
 ![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/Baralho.jpg)
 
-![App Screenshot](https://github.com/juhwiz/Ailurus/blob/master/Baralho.jpg)
 
